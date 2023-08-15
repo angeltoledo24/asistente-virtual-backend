@@ -1,3 +1,4 @@
+from typing import Any
 from django.http import JsonResponse, HttpResponse
 from rest_framework.views import APIView
 from django.conf import settings
@@ -7,6 +8,9 @@ import os
 
 
 class AudioUploadView(APIView, IAServices):
+    def __init__(self, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
+
     def post(
         self,
         request,

@@ -85,4 +85,4 @@ def get_audio_response(request, id):
 
 
 def saludar(request):
-    return HttpResponse({"message": "saludado"})
+    return JsonResponse({"message": "saludado"})

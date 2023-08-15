@@ -22,7 +22,7 @@ class AudioUploadView(APIView, IAServices):
         contextJson = request.POST.get("context")
 
         # guardamos el audio que nos llego por la request
-        file_path = os.path.join(settings.MEDIA_ROOT, f"input_{id}.mp3")
+        file_path = os.path.join(settings.MEDIA_ROOT, f"input_{id}")
         with open(file_path, "wb") as destination:
             for chunk in audio_file.chunks():
                 destination.write(chunk)
@@ -62,15 +62,15 @@ class AudioUploadView(APIView, IAServices):
 
 def get_audio_response(request, id):
     if request.method == "GET":
-        filepath_input = os.path.join(settings.MEDIA_ROOT, f"input_{id}.mp3")
-        filepath_response = os.path.join(settings.MEDIA_ROOT, f"{id}.mp3")
+        filepath_input = os.path.join(settings.MEDIA_ROOT, f"input_{id}")
+        filepath_response = os.path.join(settings.MEDIA_ROOT, f"{id}")
 
         # Enviamos el audio como respuesta
         audio_file = open(filepath_response, "rb")
 
         # preparamos la respuesta
         response = HttpResponse(audio_file.read(), content_type="audio/mpeg")
-        response["Content-Disposition"] = 'attachment; filename="audio.mp3"'
+        response["Content-Disposition"] = 'attachment; filename="audio"'
 
         # Cierra el archivo de audio
         audio_file.close()

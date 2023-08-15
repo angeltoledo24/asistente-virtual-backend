@@ -60,7 +60,7 @@ class IAServices:
         # generamos audio
         audio = generate(text=text, voice="Josh", model="eleven_multilingual_v1")
         # guardamos el audio
-        file_path = os.path.join(settings.MEDIA_ROOT, f"{id}")
+        file_path = os.path.join(settings.MEDIA_ROOT, f"{id}.mp3")
         save(audio, file_path)
 
         return file_path

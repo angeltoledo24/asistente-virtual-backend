@@ -20,7 +20,8 @@ class AudioUploadView(APIView, IAServices):
         audio_file = request.FILES["file"]
         id = request.POST.get("id")
         contextJson = request.POST.get("context")
-
+        print("audio_file")
+        print(audio_file)
         # guardamos el audio que nos llego por la request
         file_path = os.path.join(settings.MEDIA_ROOT, f"input_{id}")
         with open(file_path, "wb") as destination:

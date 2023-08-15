@@ -23,6 +23,11 @@ class AudioUploadView(APIView, IAServices):
         print("audio_file")
         print(audio_file)
         # guardamos el audio que nos llego por la request
+        print("MEDIA_ROOT:", settings.MEDIA_ROOT)
+        print("id:", id)
+        file_path = os.path.join(settings.MEDIA_ROOT, f"input_{id}")
+        print("file_path:", file_path)
+
         file_path = os.path.join(settings.MEDIA_ROOT, f"input_{id}")
         with open(file_path, "wb") as destination:
             for chunk in audio_file.chunks():
